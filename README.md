@@ -1,6 +1,6 @@
 ﻿### BbgShop商城（微信小程序端）
 
-本项目需要配合BbgShop商城服务端使用，GitHub: [https://gitee.com/cyh1231wp/bbgshop-node](https://gitee.com/cyh1231wp/bbgshop-node)
+本项目需要配合BbgShop商城服务端使用，GitHub: [https://github.com/yuanbon/bbgshop_nodemaster](https://github.com/yuanbon/bbgshop_nodemaster)
 
 ### 功能列表
 + 首页
@@ -15,7 +15,7 @@
 
 
 ### 服务端api
-项目地址：https://gitee.com/cyh1231wp/bbgshop-node
+项目地址：https://github.com/yuanbon/bbgshop_nodemaster
 
 ### 最后
 谢谢大家支持
