@@ -1,0 +1,484 @@
+/* pages/Bargain/bargain.wxss */
+.tip {
+  text-align: center;
+  font-size: 22rpx;
+  color: #757575;
+  margin-top: 34vh;
+}
+.bargain_all {
+  border-bottom: 1px #f4f4f4 solid; 
+  position: relative;
+  height: 238rpx;
+  margin: 2rpx;
+  /* width: 100%; */
+}
+.bargain_img {
+  /* border: 1px salmon solid; */
+  position: absolute;
+  height: 230rpx;
+  width: 248rpx;
+  margin: 4rpx;
+}
+.bargain_name {
+  position: absolute;
+  /* border: 1px salmon solid; */
+  margin-top: 6rpx;
+  margin-right: 4rpx;
+  margin-left: 260rpx;
+  padding: 5rpx;
+  font-size: 30rpx;
+  line-height: 38rpx;
+  max-height:  76rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+ .bargain_time{
+  position: absolute;
+  /* border: 1px salmon solid; */
+  margin-top: 133rpx;
+  margin-left: 77vw; 
+  width: 20vw;
+  color: #59595b;
+  font-size: 20rpx;
+  text-align: center;
+} 
+.bargain_init{
+  position: absolute;
+  margin-top: 152rpx;
+  margin-right: 4rpx;
+  margin-left: 260rpx;
+  color:#878787;
+  font-size: 20rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  /* font-weight: 600; */
+  /* font-size: 32rpx;
+  color:#F56C6C;
+  height: 36rpx;
+  line-height: 36rpx; */
+}
+
+.bargain_other {
+  position: absolute;
+  /* border: 1px salmon solid; */
+  margin-top: 185rpx;
+  margin-right: 4rpx;
+  margin-left: 260rpx;
+  font-size: 28rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #e02e24;
+  font-weight: 600;
+
+  
+}
+.bargain_action {
+  position: absolute;
+  /* border: 1px salmon solid; */
+  margin-top: 170rpx;
+  /* margin-right: 4rpx; */
+  margin-left: 77vw; 
+  width: 20vw;
+  text-align: center;
+  background-color: #e02e24; 
+  border-radius: 15rpx;
+  /* border: none; */
+  color:#fff;
+  font-size: 20rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+}
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.commodity_sku_box {
+  width: 100%;
+   /* overflow: hidden;  */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  /* padding-top: 20rpx; */
+}
+.sku_box_top {
+  /* border: 1px solid #000; */
+  height: 200rpx;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+  border-bottom: 1px #eee solid;
+}
+.sku_box_top_img {
+  position: absolute;
+  width: 250rpx;
+  left: 30rpx;
+  height: 250rpx;
+   margin-top: -100rpx; 
+   background: #fff;
+  /* border: 2px #fff solid; */
+  border-radius: 10rpx;
+  /* border:2px solid #fff; */
+  /* padding: 2px; */
+  /* box-shadow: darkgrey 0px 0px 0px 2px; */
+  /* margin-bottom: 20rpx; */
+}
+.sku_box_top_skuprice {
+  position: absolute;
+  left: 300rpx;
+  top: 30rpx;
+  font-size: 34rpx;
+  color: #E02E24;
+}
+.sku_box_top_skuvalue{
+  position: absolute;
+  left: 300rpx;
+  top: 90rpx;
+  font-size: 28rpx;
+  /* color: #E02E24; */
+}
+.sku_box_top_skurelprice {
+  font-size: 25rpx;
+  text-decoration:line-through;
+  color: #757575;
+}
+.sku_box_middle {
+  margin: 20rpx;
+  /* height: 500rpx; */
+}
+.sku_middle_spec {
+  /* border: 1px solid #000; */
+}
+.sku_middle_spec_name {
+  /* border: 1px solid #000; */
+  font-size: 28rpx;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  /* border-bottom: 1px solid #eee; */
+}
+.sku_middle_spec_value {
+    display: inline-block;
+    height: 62rpx;
+    background: #f5f5f5;
+    border-radius: 15rpx;
+    padding: 0 35rpx;
+    line-height: 62rpx;
+    text-align: center;
+    margin-right: 25rpx;
+    margin-top: 1.5rpx;
+    margin-bottom: 16.5rpx;
+    /* border: 1px solid #333; */
+    font-size: 25rpx;
+    color: #333;
+}
+.sku_middle_spec_values {
+  border-bottom: 1px solid #eee;
+}
+.sku_middle_spec_value.disable{
+    border: 1px solid #ccc;
+    color: #ccc;
+}
+.sku_middle_spec_value.selected{
+  /* border: 1px solid #b4282d; */
+  background: #e02e24;
+  color: #f5f5f5;
+}
+.sureBtn {
+  background: #E02E24;
+  color: #fff;
+  border-radius: 0rpx;
+}
+.tipButtomArea {
+  border-top: 1px solid #fafafa;   
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 100rpx;
+  z-index: 217;
+  background: rgba(255, 255, 255, 1)
+}
+.tipButtomArea_left {
+  /* border: 1px solid #b4282d; */
+  border-right: 1px solid #fafafa;
+  width: 50%;
+  margin: 8rpx;
+  text-align: center;
+  font-size: 26rpx;
+  
+  height: 100rpx;  
+  line-height: 100rpx; 
+  float: left;
+}
+.tipButtomArea_right{
+  /* border: 1px solid #b4282d; */
+  width: 50%;
+  margin-left: calc(50vw - 8rpx);
+  margin-top: 8rpx;
+  margin-right: 8rpx;
+  margin-bottom: 8rpx;
+  text-align: center;
+  font-size: 26rpx;
+  height: 100rpx;  
+  line-height: 100rpx; 
+  /* float: right */
+}
+.tipButtomArea_left.selectd{
+  color: #E02E24
+}
+.tipButtomArea_right.selectd{
+  color: #E02E24
+}
+.tiptext {
+  text-align: center;
+  margin-top: 40vh;
+  font-size: 28rpx;
+  color: #757575;
+}
+.userbargain_area {
+    /* border: 1px black solid;   */
+    border-bottom: 1px solid #f4f4f4;  
+    
+  /* margin-bottom: 20rpx; */
+  position: relative;
+  height: 258rpx;
+  margin: 2rpx 2rpx 30rpx 2rpx; 
+}
+.userbargain_goods_pic {
+  /* border: 1px black solid; */
+  position: absolute;
+  height: 178rpx;
+  width: 180rpx;
+  margin: 4rpx;
+}
+.userbargain_goods_text {
+  /* border: 1px black solid; */
+   border-bottom: 1px solid #fafafa; 
+  position: absolute;
+  width: calc(100vw - 200rpx);
+  height: 180rpx;
+  margin-top: 6rpx;
+  margin-right: 4rpx;
+  margin-left: 190rpx;
+}
+.userbargain_goods_name {
+   position: absolute;
+  /* border: 1px salmon solid; */
+  /* margin-top: 6rpx; */
+  /* margin-right: 4rpx; */
+  /* margin-left: 190rpx; */
+  padding: 5rpx;
+  font-size: 30rpx;
+  line-height: 38rpx;
+  max-height:  76rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.userbargain_goods_sku{
+  position: absolute;
+  /* border: 1px salmon solid; */
+   margin-top: 85rpx; 
+  /* margin-right: 4rpx; */
+  /* margin-left: 190rpx; */
+  color: #999999;
+  padding: 5rpx;
+  font-size: 22rpx;
+  line-height: 28rpx;
+  height: 28rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.userbargain_goods_cut {
+   position: absolute;
+   margin-top: 135rpx;
+   padding: 5rpx;
+   font-size: 26rpx;
+   color: #757575;
+}
+.userbargain_goods_cutRed {
+  color: #e02e24; 
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.userbargain_goods_cuttextRed {
+  color: #4caf50; 
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.userbargain_goods_cuttextblue {
+  color: #409EFF; 
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.userbargain_goods_lesttime_area {
+  position: absolute;
+  /* border: 1px solid #000; */
+  height: 70rpx;
+  width: 100%;
+  margin-top: 188rpx;
+}
+.userbargain_goods_lesttime {
+  position: absolute;
+  /* border: 1px solid #000; */
+  margin-left: 43vw;
+  width: 32vw;
+  height: 50rpx;
+  margin-top: 10rpx; 
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #f44336;
+  font-weight: bold;
+  text-align: center;
+
+}
+.userbargain_goods_havepaytime {
+  position: absolute;
+  /* border: 1px solid #000; */
+  margin-left: 43vw;
+  width: 32vw;
+  height: 50rpx;
+  margin-top: 10rpx; 
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #757575;
+  /* font-weight: bold; */
+  text-align: center;
+}
+.userbargain_goods_endtime {
+    position: absolute;
+  /* border: 1px solid #000; */
+  margin-left: 43vw;
+  width: 32vw;
+  height: 50rpx;
+  margin-top: 10rpx; 
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #E02E24;
+  font-weight: bold;
+  text-align: center;
+
+}
+.userbargain_goods_gettime {
+  position: absolute;
+  /* border: 1px solid #000; */
+  margin-left: 43vw;
+  width: 32vw;
+  height: 50rpx;
+  margin-top: 10rpx; 
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #4caf50;
+  font-weight: bold;
+  text-align: center;
+}
+.userbargain_goods_paytime {
+   position: absolute;
+  /* border: 1px solid #000; */
+  margin-left: 43vw;
+  width: 32vw;
+  height: 50rpx;
+  margin-top: 10rpx; 
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #409EFF;
+  font-weight: bold;
+  text-align: center;
+}
+.userbargain_goods_actionbtn {
+  position: absolute;
+  /* border: 1px salmon solid; */
+   margin-top: 8rpx; 
+  /* margin-right: 4rpx; */
+  margin-left: 77vw; 
+  width: 20vw;
+  text-align: center;
+  background-color: #f44336; 
+  border-radius: 15rpx;
+  /* border: none; */
+  font-weight: bold;
+  color:#fff;
+  font-size: 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.userbargain_goods_endaction {
+  position: absolute;
+  /* border: 1px salmon solid; */
+   margin-top: 8rpx; 
+  /* margin-right: 4rpx; */
+  margin-left: 77vw; 
+  width: 20vw;
+  text-align: center;
+  /* background-color: #e02e24;  */
+  border-radius: 15rpx;
+  /* border: none; */
+  color:#fff;
+  font-weight: bold;
+  font-size: 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #909399;
+}
+.userbargain_goods_getactionbtn {
+  position: absolute;
+  /* border: 1px salmon solid; */
+   margin-top: 8rpx; 
+  /* margin-right: 4rpx; */
+  margin-left: 77vw; 
+  width: 20vw;
+  text-align: center;
+  /* background-color: #e02e24;  */
+  border-radius: 15rpx;
+  /* border: none; */
+  color:#fff;
+  font-weight: bold;
+  font-size: 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #4caf50;
+}
+.userbargain_goods_payactionbtn {
+   position: absolute;
+  /* border: 1px salmon solid; */
+   margin-top: 8rpx; 
+  /* margin-right: 4rpx; */
+  margin-left: 77vw; 
+  width: 20vw;
+  text-align: center;
+  /* background-color: #e02e24;  */
+  border-radius: 15rpx;
+  /* border: none; */
+  color:#fff;
+  font-weight: bold;
+  font-size: 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #409EFF;
+}
+.bargain_nogoods {
+  text-align: center;
+  color: #757575;
+  margin-top: 40vh;
+}
+/* .sku_box_bottom {
+  border: 1px solid #000;
+  margin: 0 15rpx 15rpx 15rpx;
+  height: 128rpx;
+
+} */

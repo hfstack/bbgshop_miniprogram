@@ -1,0 +1,28 @@
+<!--pages/ucenter/bingphone/bingphone.wxml-->
+<view wx:if="{{auth}}">
+<view wx:if="{{!isbing}}">
+  <view class='bingtitle'><span wx:if="{{userinfo.mobile != 0 }}">{{userinfo.mobile}}</span>{{bingisnottext}}</view>
+  <view class="add-form" class='bingfrom'>
+        <view class="form-item" class='bingitem'>
+            <input class="input" class='bingiteminput' bindinput="bindinputMobile" placeholder="手机号码" />
+        </view>
+        <view class="form-item"  class='bingitem'>
+            <input class="input" class='bingiteminput' bindinput="bindinputcode" placeholder="验证码"/>
+        </view>
+        <view class='btnarea'>
+          <button size="mini" class='codebtn' type="default"  loading="{{codeloading}}" disabled="{{codedisabled}}" bindtap="sendcode">{{sendcodetext}}</button>
+          <button size="mini" class='checkedbtn' type="default" disabled="{{checkdisabled}}" bindtap="checked"> 确定 </button>
+        </view>
+   </view>
+</view>
+
+<view wx:if="{{isbing}}">
+
+  <view class='bingtitle'>您已绑定手机号</view>
+  <view class='bingphone'>{{userinfo.mobile}}</view>
+  <button size="mini" class='changebtn' type="default" disabled="{{changeisabled}}" bindtap="changed"> 更换绑定手机号 </button>
+</view>
+</view>
+<view class='tip' wx:if="{{!auth}}">
+  未授权，请在“我的”页点击头像授权
+</view>

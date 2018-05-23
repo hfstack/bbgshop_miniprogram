@@ -1,0 +1,238 @@
+<scroll-view class="container" scroll-y="true">
+  <view wx:if="{{!openAttr}}">
+    <swiper class="goodsimgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+      <swiper-item wx:for="{{gallery}}" wx:key="{{item.id}}">
+        <image src="{{item.img_url}}" background-size="cover"></image>
+      </swiper-item>
+    </swiper>
+    <!-- <view class="service-policy">
+      <view class="item">30天无忧退货</view>
+      <view class="item">48小时快速退款</view>
+      <view class="item">满88元免邮费</view>
+    </view> -->
+    <view class="goods-info">
+      <view class="c">
+        <text class="name">{{goods.name}}</text>
+        <text class="desc">{{goods.goods_brief}}</text>
+        <text class="price">￥{{goods.retail_price}} </text>
+         <view class="asf">￥{{goods.extra_price}}</view> 
+        <!-- <view class="brand" wx:if="{{brand.name}}">
+          <navigator url="../brandDetail/brandDetail?id={{brand.brandId}}">
+            <text>{{brand.name}}</text>
+          </navigator>
+        </view> -->
+      </view>
+    </view>
+    <view class="section-nav section-attr" bindtap='checkpower' data-type='0'>
+      <view class="t">选择：{{checkedSpecText}}</view>
+      <image class="i" src="../../static/images/address_right.png" background-size="cover"></image>
+    </view> 
+     <view class="section-nav section-attr" bindtap='toindex'>
+      <image src="../../image/logo.png" class='section-nav_logo'></image>
+      <view class="tt">贝堡全球购</view>
+      <image class="i" src="../../static/images/address_right.png" background-size="cover"></image>
+    </view> 
+    <!--<view class="section-nav section-act">
+      <view class="t">
+        <view class="label">1个促销:</view>
+        <view class="tag">万圣趴</view>
+        <view class="text">全场满499，额外送糖果</view>
+      </view>
+      <image class="i" src="../../static/images/address_right.png" background-size="cover"></image>
+    </view>-->
+     <view class="comments" wx:if="{{comment.count > 0}}">
+      <view class="h">
+        <navigator url="../comment/comment?goodsid={{goods.id}}">
+          <text class="t">评价({{comment.count > 999 ? '999+' : comment.count}})</text>
+          <text class="i">查看全部</text>
+        </navigator>
+      </view>
+      <view class="b">
+        <view class="item">
+          <view class="info">
+            <view class="user">
+              <image src="{{comment.data.avatar}}"></image>
+              <text>{{comment.data.nickname}}</text>
+            </view>
+            <view class="time">{{comment.data.add_time}}</view>
+          </view>
+          <view class="content">
+            {{comment.data.content}}
+          </view>
+          <view class="imgs" wx:if="{{comment.data.pic_list.length > 0}}">
+            <image class="img" wx:for="{{comment.data.pic_list}}" wx:key="{{item.id}}" src="{{item.pic_url}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>   
+    <view class="goods-attr">
+      <!-- <view class="h">
+        <view class="line"></view>
+        <text class="title">常见问题</text>
+      </view> -->
+      <view class="t">┈ 商品详情 ┈</view>
+      <view class="l">
+        <view class="item" wx:for="{{attribute}}" wx:key="{{item.name}}">
+          <text class="left">{{item.name}}</text>
+          <text class="right">{{item.value}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="detail">
+      <import src="../../lib/wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
+    </view>
+
+
+    <view class="common-problem">
+      <view class="h">
+        <view class="line"></view>
+        <text class="title">常见问题</text>
+      </view>
+      <view class="b">
+        <view class="item" wx:for="{{issueList}}" wx:key="{{item.id}}">
+          <view class="question-box">
+            <text class="spot"></text>
+            <text class="question">{{item.question}}</text>
+          </view>
+          <!-- <br /> -->
+          <view class="answer">
+            {{item.answer}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="related-goods" wx:if="{{relatedGoods.length > 0}}">
+      <view class="h">
+        <view class="line"></view>
+        <text class="title">大家都在看</text>
+      </view>
+      <view class="b">
+        <view class="item" wx:for="{{relatedGoods}}" wx:key="{{item.id}}">
+          <navigator url="/pages/goods/goods?id={{item.id}}">
+            <image class="img" src="{{item.list_pic_url}}" background-size="cover"></image>
+            <text class="name">{{item.name}}</text>
+            <text class="price">￥{{item.retail_price}}</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- <view wx:if="{{openAttr}}" class="attr-pop">
+    <view class="img-info">
+      <image class="img" src="{{goods.list_pic_url}}"></image>
+      <view class="info">
+        <view class="c">
+          <view class="p">价格：￥{{checkgoodsprice.retail_price}}</view>
+          <view class="a" wx:if="{{productList.length>0}}">已选择：{{checkedSpecText}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="spec-con">
+      <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
+        <view class="name">{{item.name}}</view>
+        <view class="values">
+          <view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</view>
+        </view>
+      </view>
+
+      <view class="number-item">
+        <view class="name">数量</view>
+        <view class="selnum">
+          <view class="cut" bindtap="cutNumber">-</view>
+          <input value="{{number}}" class="number" disabled="true" type="number" />
+          <view class="add" bindtap="addNumber">+</view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+</scroll-view>
+<view class="bottom-btn " wx:if="{{collage.length == 0}}">
+  <view class="l l-collect {{ openAttr ? 'back' : ''}}" bindtap="closeAttrOrCollect">
+    <image class="icon" src="{{ collectBackImage }}"></image>
+  </view>
+  <view class="l l-cart">
+     <view class="box"> 
+      <text class="cart-count">{{cartGoodsCount}}</text>
+      <image bindtap="openCartPage" class="icon" src="/static/images/ic_menu_shoping_nor.png"></image>
+     </view> 
+  </view>
+  <view class="c" bindtap="checkpower" data-type='0'>加入购物车</view>
+  <view class="r" bindtap="checkpower" data-type='0'>立即购买</view>
+  <!-- <view class="c" bindtap="checkoutOrder">立即购买</view>
+    <view class="r" bindtap="addToCart">加入购物车</view> -->
+</view>
+<view class="bottom-btn" wx:if="{{collage.length > 0}}">
+  <view class="bottom-btn_collect {{ openAttr ? 'back' : ''}}" bindtap="closeAttrOrCollect">
+    <image class="icon" src="{{ collectBackImage }}"></image>
+  </view>
+  <view class="bottom-btn_collect_cat">
+     <!-- <view class="box">  -->
+       <text class="cart-countt">{{cartGoodsCount}}</text> 
+      <image bindtap="openCartPage" class="icon" src="/static/images/ic_menu_shoping_nor.png"></image>
+
+     <!-- </view>  -->
+  </view>
+  <view style='width:calc(100vw - 200rpx)'>
+  <view class="cat" bindtap="checkpower" data-type='0'>加入购物车</view>
+  <view class="get" bindtap="checkpower" data-type='0'>
+   <view class='getlocal'>￥{{goods.retail_price}}</view>
+    <view class='getvalue'>单独购买</view>
+  </view>
+  <view class='collage' bindtap="checkpower" data-type='1'>
+     <view class='collocal'><span style="font-size:22rpx;">￥</span>{{collage[0].collage_price}}</view>
+    <view class='colvalue' >拼团购买</view>
+  </view>
+  </view>
+  
+</view>
+
+<!--隐藏区域  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_sku_box" wx:if="{{showModalStatus}}">
+  <view class='sku_box_top'>
+    <image class='sku_box_top_img' src='{{goods.list_pic_url}}'></image>
+    <view class='sku_box_top_skuprice' wx:if="{{typec == 0}}">
+      ￥{{checkgoodsprice.retail_price}}元
+       <!-- <span class='sku_box_top_skurelprice'>￥{{checkgoodsprice.retail_price}} </span>  -->
+    </view>
+    <view class='sku_box_top_skuprice' wx:if="{{typec == 1}}">
+      <span style="font-size:20rpx;font-weight:bold"> 拼团价￥</span>{{collage[0].collage_price}}元
+       <span class='sku_box_top_skurelprice'>￥{{checkgoodsprice.retail_price}} </span> 
+    </view>
+    <view class='sku_box_top_skuvalue' wx:if="{{productList.length>0}}">
+      已选择：{{checkedSpecText}}
+    </view>
+    <view class='sku_middle_spec_goodsnum'>剩余：{{checkgoodsprice.goods_number}}</view>
+  </view>
+  <view class='sku_box_middle'>
+    <view class="sku_middle_spec">
+      <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
+        <view class="sku_middle_spec_name">{{item.name}}</view>
+        <view class="sku_middle_spec_values">
+          <view class="sku_middle_spec_value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="sku_middle_spec_num" wx:if="{{typec == 0}}">
+       <view class="sku_middle_spec_name">数量</view>
+      <view class="selnum">
+        <view class="cut" bindtap="cutNumber">-</view>
+        <input value="{{number}}" class="number" disabled="true" type="number" />
+        <view class="add" bindtap="addNumber">+</view>
+      </view> 
+    </view>
+  </view>
+  <!-- <view class='sku_box_bottom'>
+  收货地址
+  </view> -->
+  <view class="addcat" bindtap="addToCart" wx:if="{{typec == 0}}">加入购物车</view>
+  <view class="buynow" bindtap="checkoutOrder" wx:if="{{typec == 0}}">立即购买</view>
+
+  <view class="addcat" bindtap="canelCart" wx:if="{{typec == 1}}">取消</view>
+  <view class="collagenow" bindtap="collect" wx:if="{{typec == 1}}">立即拼团</view>
+  <!-- <button class='sureBtn' bindtap='skuSure'>确定</button> -->
+</view>

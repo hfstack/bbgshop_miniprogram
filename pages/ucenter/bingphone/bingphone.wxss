@@ -1,0 +1,53 @@
+/* pages/ucenter/bingphone/bingphone.wxss */
+.bingtitle {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5vh;
+}
+.tip {
+  text-align: center;
+  font-size: 22rpx;
+  color: #757575;
+  margin-top: 34vh;
+}
+.bingfrom {
+   /* border: 1px solid black;  */
+  width: 80vw;
+  margin: 15vh auto;
+}
+.bingitem {
+  margin: 4vh;
+}
+.bingiteminput {
+  border-bottom: 1px solid #ddd;
+  padding-left: 10px;
+}
+.bingiteminput:hover {
+  border-bottom: 1px solid #409EFF;
+  padding-left: 10px;
+}
+.btnarea {
+  /* border: 1px solid black;  */
+  margin: 0 4vh;
+  margin-top: 10vh;
+  /* position: absolute */
+}
+.codebtn {
+  float: left;
+}
+.checkedbtn {
+  float: right;
+}
+.bingphone {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10vh;
+
+}
+.changebtn {
+  position: absolute;
+  left: 50vw;
+  margin-top: 20vh;
+  /* background-color: #409EFF; */
+}

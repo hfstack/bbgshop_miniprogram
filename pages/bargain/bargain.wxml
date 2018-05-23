@@ -1,0 +1,145 @@
+<!--pages/Bargain/bargain.wxml-->
+<!-- <text>pages/Bargain/bargain.wxml</text> -->
+<view wx:if="{{auth}}">
+<view class='all' style='margin-bottom:126rpx;' wx:if="{{showscreen == 0}}" >
+
+  <view class='bargain_all' wx:for="{{bargainList}}" wx:if="{{bargainList.length > 0}}" wx:key="{{item.id}}">
+    <image class='bargain_img' src="{{item.goods.list_pic_url}}"></image>
+    <view class='bargain_name'>{{item.goods.name}}</view>
+    <!-- <view class='bargain_time'>一刀999元</view> -->
+    <view class='bargain_init'>
+      {{item.purchased_num}}人已 {{item.lowest_price}} 元拿
+    </view>
+    <view class='bargain_other'>原价{{item.retail_price}}元</view>
+    <view bindtap='showModal' data-goodsid='{{item.goodsid}}' data-barid='{{item.id}}' class='bargain_action'>砍价{{item.lowest_price}}元得</view>
+  </view>
+  <!-- bindtap='toBargainGoods'  -->
+  <view class='bargain_nogoods' wx:if="{{bargainList.length == 0}}">
+    当前没有正在进行的砍价！(刚授权请刷新页面！)
+  </view>
+  <!--隐藏区域  -->
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="commodity_sku_box" wx:if="{{showModalStatus}}">
+    <view class='sku_box_top'>
+      <image class='sku_box_top_img' src='{{goods.list_pic_url}}'></image>
+      <view class='sku_box_top_skuprice'>
+        ￥{{thisbargoods.lowest_price}}元
+        <span class='sku_box_top_skurelprice'>￥{{checkgoodsprice.retail_price}} </span>
+      </view>
+      <view class='sku_box_top_skuvalue' wx:if="{{productList.length>0}}">
+        已选择：{{checkedSpecText}}
+      </view>
+    </view>
+    <view class='sku_box_middle'>
+      <view class="sku_middle_spec">
+        <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
+          <view class="sku_middle_spec_name">{{item.name}}</view>
+          <view class="sku_middle_spec_values">
+            <view class="sku_middle_spec_value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='sku_box_bottom'>
+  收货地址
+  </view> -->
+    <button class='sureBtn' bindtap='skuSure'>确定</button>
+  </view>
+</view>
+<view class='all' style='margin-bottom:126rpx;' wx:if="{{showscreen == 1}}" >
+  <view class='tiptext' wx:if="{{userbargainList.length == 0}}">您还没有发起过砍价</view>
+  <view class='userbargain_area' wx:if="{{userbargainList.length > 0}}" wx:for="{{userbargainList}}" wx:key="{{item.id}}">
+    <image class='userbargain_goods_pic' src="{{item.goods_pic}}"></image>
+    <view class='userbargain_goods_text'>
+      <view class='userbargain_goods_name'> {{item.goods_name}} </view>
+      <view class='userbargain_goods_sku'>规格： {{item.goods_sku_value}} </view>
+      <view class='userbargain_goods_cut' wx:if="{{item.iscut == 0}}">已砍
+        <span class="userbargain_goods_cutRed">{{item.have_cut_price}}</span>元，还差
+        <span class="userbargain_goods_cutRed">{{item.have_cut_lest}}</span>元
+      </view>
+      <view class='userbargain_goods_cut' wx:if="{{item.iscut == 1}}">
+        <span class="userbargain_goods_cuttextRed">砍价成功</span>
+      </view>
+      <view class='userbargain_goods_cut' wx:if="{{item.iscut == 2}}">
+        <span class="userbargain_goods_cuttextblue">订单已生成</span>
+      </view>
+    </view>
+    <view class='userbargain_goods_lesttime_area'>
+      <span wx:if="{{item.iscut == 0}}">
+        <view class='userbargain_goods_lesttime' wx:if='{{item.listtime !== "0"}}'>
+          {{item.listtime}}后结束
+        </view>
+        <view class='userbargain_goods_endtime' wx:if='{{item.listtime == "0"}}'>
+          此砍价已结束
+        </view>
+      </span>
+      <span wx:if="{{item.iscut == 1}}">
+        <view class='userbargain_goods_gettime' wx:if='{{item.listtime !== "0"}}'>
+          请在{{item.listtime}}内领取
+        </view>
+        <view class='userbargain_goods_endtime' wx:if='{{item.listtime == "0"}}'>
+          已超时，未领取
+        </view>
+      </span>
+      <span wx:if="{{item.iscut == 2}}">
+        <view class='userbargain_goods_paytime' wx:if='{{item.listtime !== "0"}}'>
+          请在{{item.listtime}}内付款
+        </view>
+        <view class='userbargain_goods_endtime' wx:if='{{item.listtime == "0"}}'>
+          已超时，未付款
+        </view>
+      </span>
+      <span wx:if="{{item.iscut == 3}}">
+        <view class='userbargain_goods_havepaytime'>
+          用户已付款
+        </view>
+        <!-- <view class='userbargain_goods_endtime' wx:if='{{item.listtime == "0"}}'>
+          已超时，未付款
+        </view> -->
+      </span>
+      <span wx:if="{{item.iscut == 0}}">
+        <view class='userbargain_goods_actionbtn' bindtap='contoncut' data-id='{{item.id}}' wx:if='{{item.listtime !== "0"}}'>
+          继续砍价
+        </view>
+        <view class='userbargain_goods_endaction' bindtap='contonendcut' data-id='{{item.id}}' wx:if='{{item.listtime == "0"}}'>
+          砍价结束
+        </view>
+      </span>
+      <span wx:if="{{item.iscut == 1}}">
+        <view class='userbargain_goods_getactionbtn' bindtap='contoncut' data-id='{{item.id}}' wx:if='{{item.listtime !== "0"}}'>
+         点击领取
+        </view>
+        <view class='userbargain_goods_endaction' bindtap='contonendcut' data-id='{{item.id}}' wx:if='{{item.listtime == "0"}}'>
+          未领取
+        </view>
+      </span>
+      <span wx:if="{{item.iscut == 2}}">
+        <view class='userbargain_goods_payactionbtn' bindtap='contonpay' data-id='{{item.id}}' wx:if='{{item.listtime !== "0"}}' >
+         点击付款
+        </view>
+        <view class='userbargain_goods_endaction' bindtap='contonendcut' data-id='{{item.id}}' wx:if='{{item.listtime == "0"}}'>
+          未付款
+        </view>
+      </span>
+      <span wx:if="{{item.iscut == 3}}">
+        <view class='userbargain_goods_endaction' bindtap='contonendcut' data-id='{{item.id}}'>
+         已完成
+        </view>
+        <!-- <view class='userbargain_goods_endaction' bindtap='contonendcut' data-id='{{item.id}}' wx:if='{{item.listtime == "0"}}'>
+          未付款
+        </view> -->
+      </span>
+    </view>
+  </view>
+  <!-- <view wx:if="{{userbargainList.length == 0}}">
+    1234879
+  </view> -->
+</view>
+<view class='tipButtomArea' wx:if="{{auth}}">
+  <view bindtap='bargoodsscreen' class='tipButtomArea_left {{showscreen ==0 ? "selectd" : ""}}'>砍价商品</view>
+  <view bindtap='baruserscreen' class='tipButtomArea_right {{showscreen ==1 ? "selectd" : ""}}'>我的砍价</view>
+</view>
+</view>
+ <view class='tip' wx:if="{{!auth}}">
+  未授权，请在“我的”页点击头像授权
+</view> 
